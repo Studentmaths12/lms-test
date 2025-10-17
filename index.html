@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyApp — Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>StudyApp</h1>
+    <div id="user-area" class="hidden">
+      <span id="user-email"></span>
+      <button id="signout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth-section">
+      <div class="card">
+        <h2>Sign in / Sign up</h2>
+        <form id="auth-form">
+          <input id="email" type="email" placeholder="Email" required />
+          <input id="password" type="password" placeholder="Password" required />
+          <div class="btn-row">
+            <button id="signin-btn" type="button">Sign in</button>
+            <button id="signup-btn" type="button">Sign up</button>
+          </div>
+        </form>
+        <p class="muted">Use a school email to sign up. For LMS import you will be asked for Canvas token later.</p>
+      </div>
+    </section>
+
+    <section id="app-section" class="hidden">
+      <div class="grid">
+        <aside class="sidebar card">
+          <h3>Subjects</h3>
+          <ul id="subjects-list"></ul>
+          <form id="subject-form" class="inline-form">
+            <input id="subject-title" placeholder="New subject (e.g. Math)" required />
+            <button type="submit">Add</button>
+          </form>
+
+          <h4>LMS / Canvas</h4>
+          <div class="lms-import">
+            <input id="canvas-token" placeholder="Canvas API token" />
+            <input id="canvas-course-id" placeholder="Canvas course ID" />
+            <button id="import-canvas-btn">Import assignments</button>
+            <p class="muted">For testing, paste a Canvas API token and course id. Production should use server-side OAuth.</p>
+          </div>
+        </aside>
+
+        <section class="main card">
+          <div class="toolbar">
+            <div class="tabs">
+              <button id="tab-today" class="active">Today</button>
+              <button id="tab-week">Week</button>
+              <button id="tab-upcoming">Upcoming</button>
+            </div>
+            <div class="quick-add">
+              <input id="quick-title" placeholder="Quick add task..." />
+              <input id="quick-due" type="date" />
+              <button id="quick-add-btn">Add</button>
+            </div>
+          </div>
+
+          <div id="content-area">
+            <div id="tasks-list"></div>
+            <div id="week-view" class="hidden"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="muted">Prototype — built with HTML, CSS, and Supabase</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
